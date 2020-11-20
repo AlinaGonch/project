@@ -17,7 +17,11 @@ class Post(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse("blog_detail", kwargs={"slug": self.slug})
+        return reverse('blog:blog_detail',
+        args=[self.publish.year,
+        self.publish.strftime('%m'),
+        self.publish.strftime('%d'),
+        self.slug])
 
     
     class Meta:

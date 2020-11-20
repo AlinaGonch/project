@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post
 
 def blog_list(request):
-    list = Post.objects.all()
-    return render(request, 'blog_list.html', {'list': list})
+    list_o = Post.objects.all()
+    return render(request, 'blog_list.html', {'list': list_o})
 
 
 def blog_detail(request, year, month, day, post):
