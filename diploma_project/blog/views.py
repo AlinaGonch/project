@@ -1,18 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 
+def home_page(request):
+    return render(request, template_name="home.html", context={})
+
 def blog_list(request):
     list_o = Post.objects.all()
     return render(request, 'blog_list.html', {'list': list_o})
 
 
-def blog_detail(request, year, month, day, post):
-    post = get_list_or_404(
-        Post, slug=post,
-        status='publsihed',
-        publish_year=year,
-        publish_month=month,
-        publish_day=day,
+def blog_detail(request, post):
+    post = get_object_or_404(
+        Post, slug=post
         )
     return render(request,'blog_detail.html', {'post': post})
 

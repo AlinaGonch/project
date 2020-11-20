@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'diploma_project.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "diploma_poject",
+        "NAME": "diploma_project",
         "HOST": "localhost",
         "PORT": 5432,
         "USER": "postgres",

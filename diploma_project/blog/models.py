@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -9,19 +10,15 @@ class Post(models.Model):
         ('published', 'Published'),
     )
     title = models.CharField(max_length=250, verbose_name='Заголовок')
-    slug = models.SlugField(max_length=250, unique_for_date='publish', verbose_name='ссылка')
-    author = models.ForeignKey(User, related_name='blog_posts', on_delete=models.CASCADE)
-    body = models.TextField()
-    publish = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=250, unique_for_date='publish', verbose_name='Ссылка')
+    author = models.ForeignKey(User, related_name='blog_posts', on_delete=models.CASCADE, verbose_name= 'Автор')
+    body = models.TextField(verbose_name='Текст' )
+    publish = models.DateTimeField(default=timezone.now, verbose_name='Время публикации')
     status = models.CharField(max_length=10, choices = STATUS_VARIANT, default='draft')
 
 
     def get_absolute_url(self):
-        return reverse('blog:blog_detail',
-        args=[self.publish.year,
-        self.publish.strftime('%m'),
-        self.publish.strftime('%d'),
-        self.slug])
+        return reverse('blog_detail', kwargs={"post":self.slug})
 
     
     class Meta:
