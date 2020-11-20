@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 
 
 class Country(models.Model):
@@ -16,6 +17,19 @@ class Country(models.Model):
     description = models.TextField(verbose_name='Описание Страны')
     slug = models.SlugField(max_length=150, verbose_name='Ссылка')
     icon = models.ImageField(upload_to=load_photo, verbose_name="Флаг Страны")
+
+
+    def __str__(self):
+        return self.name
+
+
+    def image_tag(self):
+        if self.icon:
+            country_photo = self.icon.url
+            return mark_safe(f'<img src={country_photo} width="200" height="150"')
+        else:
+            'Photo not found'
+    image_tag.allow_tags = True
 
 
     class Meta:
@@ -43,6 +57,19 @@ class City(models.Model):
     country = models.ForeignKey('Country', on_delete=models.CASCADE, related_name='country', verbose_name='Название страны')
     image = models.ImageField(upload_to=load_photo, verbose_name="Фото Города")    
     slug = models.SlugField(max_length=150, verbose_name='Ссылка')
+
+
+    def __str__(self):
+        return self.name
+
+
+    def image_tag(self):
+        if self.image:
+            city_photo = self.image.url
+            return mark_safe(f'<img src={city_photo} width="200" height="150"')
+        else:
+            'Photo not found'
+    image_tag.allow_tags = True
 
 
     def show_image(self):

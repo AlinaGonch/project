@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div>
+        {% for country in countries %}
+            <h3>{{ country.name }}</h3>
+            <p>{{ country.description }}<p>
+            <p>{{ country.image_tag }}</p>
+    
+        {% endfor %}
+    </div>
+</body>
+</html>
