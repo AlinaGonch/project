@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div>
+        {% for city in details %}
+            <h3>{{ city.name }}</h3>
+            <p>{{ city.description }}</p>
+            <p>{{ city.image_tag }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
+

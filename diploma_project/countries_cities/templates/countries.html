@@ -7,7 +7,7 @@
 <body>
     <div>
         {% for country in countries %}
-            <h3>{{ country.name }}</h3>
+            <h3><a href="{% url 'country_details' country.id %}">{{ country.name }}</a></h3>
             <p>{{ country.description }}<p>
             <p>{{ country.image_tag }}</p>
     

@@ -50,7 +50,7 @@ class City(models.Model):
 
 
 
-    name = models.CharField(max_length=150, verbose_name='Название Страны')
+    name = models.CharField(max_length=150, verbose_name='Название Города')
     foundation_date = models.IntegerField(verbose_name='Год основания')
     population = models.IntegerField(verbose_name='Население')
     description = models.TextField(verbose_name='Описание Города')
