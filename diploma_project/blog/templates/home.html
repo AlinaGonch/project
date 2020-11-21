@@ -5,8 +5,9 @@
 </head>
 <body>
 <div id="content">
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
+   <span> Hello {{request.user}}</span> 
+<span><a href="{% url 'logout' %}">Log out</a></span>
 </div>
 </body>
 </html>

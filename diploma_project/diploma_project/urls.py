@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include("blog.urls")),
     path('countries/', include("countries_cities.urls")),
-
-    path("", lambda request: redirect("/blog/")),
+    path('account/', include("account.urls")),
+    path("", lambda request: redirect("/blog/home/")),
 ]
 
 

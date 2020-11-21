@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'gallary',
     'countries_cities',
+    'account',
 ]
 
 MIDDLEWARE = [

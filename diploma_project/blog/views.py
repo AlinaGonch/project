@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post
 
 def home_page(request):
-    return render(request, template_name="home.html", context={})
+    return render(request, 'home.html', context={})
 
 def blog_list(request):
     list_o = Post.objects.all()
