@@ -10,7 +10,7 @@ from .forms import CreateUserForm
 
 @login_required(login_url='log_page')
 def personal_page(request):
-    pass
+    return render(request, 'personal_page.html', {})
 
 def reg_page(request):
     # if request.user.is_authenticed:

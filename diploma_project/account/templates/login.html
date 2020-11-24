@@ -1,7 +1,7 @@
 
 <h3>Login</h3>
 
-					<form method="POST" action="">
+		<form method="POST" action="">
           {% csrf_token %}
 						<div class="input-group mb-3">
 							<div class="input-group-append">
@@ -19,7 +19,7 @@
 							<div class="d-flex justify-content-center mt-3 login_container">
 				 				<input class="btn login_btn" type="submit" value="Login">
 				   			</div>
-					</form>
+		</form>
   {% for message in messages%}
         <p id="messages">{{message}}</p>
   {% endfor %}
