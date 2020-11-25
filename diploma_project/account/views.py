@@ -13,9 +13,9 @@ def personal_page(request):
     return render(request, 'personal_page.html', {})
 
 def reg_page(request):
-    # if request.user.is_authenticed:
-    #     return redirect('home')
-    # else:
+    if request.user.is_authenticated:
+        return redirect('personal_page')
+    else:
         form = CreateUserForm()
         if request.method == "POST":
             form = CreateUserForm(request.POST)
@@ -29,20 +29,20 @@ def reg_page(request):
 
 
 def log_page(request):
-
-    if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            messages.info(request, 'User or Password was not given')
-
-    return render(request, 'login.html', {})
+    if request.user.is_authenticated:
+        return redirect('personal_page')
+    else:
+        if request.method == "POST":
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+                return redirect('personal_page')
+            else:
+                messages.info(request, 'User or Password was not given')
+        return render(request, 'login.html', {})
 
 
 def logout_user(request):

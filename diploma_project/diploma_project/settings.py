@@ -133,3 +133,19 @@ STATIC_ROOT = BASE_DIR / "diploma_project" / "static"
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / "diploma_project" / "media"
+
+
+#  SMTP Configurtion
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_POST = 587
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'hancharovaa5@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'diploma_project'

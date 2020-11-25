@@ -23,9 +23,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include("blog.urls")),
+    path('home/', include("home.urls")),
+    path('gallary/', include('gallary.urls')),
     path('countries/', include("countries_cities.urls")),
     path('account/', include("account.urls")),
-    path("", lambda request: redirect("/blog/home/")),
+    path("", lambda request: redirect("home/")),
 ]
 
 

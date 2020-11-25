@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def gallary_page(requests):
+    return render(requests, 'gallary.html', {})
