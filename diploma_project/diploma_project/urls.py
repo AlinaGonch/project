@@ -16,10 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include("blog.urls")),
-
-    path("", lambda request: redirect("/blog/")),
+    path('home/', include("home.urls")),
+    path('gallary/', include('gallary.urls')),
+    path('countries/', include("countries_cities.urls")),
+    path('account/', include("account.urls")),
+    path("", lambda request: redirect("home/")),
 ]
+
+
+if settings.DEBUG == True:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# parser = Thread(target=run_parser)
+# parser.start()

@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p class="date">
+        Published {{ post.publish }} by {{ post.author }}
+    </p>
+    <h2>{{post.body}}</h2>
+    <form action="{% url 'like_post' post.pk %}", method="POST">
+      {% csrf_token %}
+      <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-primary btn-sm">Like</button>  {{post.likes_in_total}} Likes
+    </form>
+       <br/>
+      <h2>Comments {{post.comments.all.count}}</h2>
+      <br/><br/><br/>
+      {% for comment in post.comments.all%}
+      <li>
+      By {{comment.author}} at {{comment.date}}<br/>
+      <br/><br/>
+      {{comment.body}}
+      </li>
+      {% endfor %}
+      <hr>
+      <h2>Add your comments</h2>
+      <form action='' id="form_add" method="POST">
+      {% csrf_token %}
+           {{form.as_p}}
+      </form>
+      <button  form="form_add", type="submit", class="btn btn-primary btn-sm">Add One</button> 
+   
+{% endblock %}
